@@ -1,0 +1,56 @@
+body, html{
+  padding: 0;
+  margin: 0;
+  background: #eee;
+  font-family: 'Lato', 'Helvetica', sans-serif;
+}
+header h1{
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+h1{
+  font-weight: 300;
+  font-size: 36px;
+}
+h1, h2, h3, h4{
+  font-family: 'Lato', sans-serif;
+}
+* {
+  box-sizing:border-box;
+}
+#note-info #note{
+  margin-bottom: 5px;
+}
+#right-panel{
+  text-align: right;
+  position: absolute;
+  top:5px;
+  right: 15px;
+}
+#note-info h2, h1{
+  margin-top:0;
+}
+#webcam{
+  display: none;
+}
+#tracked{
+  position:absolute;
+  width: 20px;
+  height: 20px;
+  border-radius:50%;
+}
+#configuration .control{
+  margin-bottom: 10px;
+}
+#configuration .control strong{
+  display: block;
+  margin-bottom: 5px;
+}
+#right-panel #title h1{
+  font-weight: bold;
+  margin-bottom: 0;
+}
+#right-panel #title h2{
+  color: #444;
+  margin-top: 5px;
+}
