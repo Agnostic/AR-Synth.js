@@ -23,7 +23,7 @@ var initialize = function(){
 ## Options
 - `color`: Color to track (Defaults to: '#b127b9')
 - `frequencyElm`: Element to show frequency
-- `noteElm`: Where Element to show note
+- `noteElm`: Element to show note
 - `cOffset`: A bigger offset will detect a bigger range of colors (defaults to 50)
 - `sizeOffset`: Detect only blocks bigger than this weight (defaults to 5)
 - `trackedElm`: Tracked point element (optional)
