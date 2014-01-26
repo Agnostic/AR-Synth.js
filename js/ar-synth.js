@@ -18,9 +18,7 @@
     CONFIG = {
 
       // RGB Color to detect
-      cR: 177,
-      cG: 39,
-      cB: 185,
+      color: '#b127b9',
 
       // Webcam element to capture
       webcamElm: document.getElementById('webcam'),
@@ -256,9 +254,10 @@
       return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     },
     computeFrame: function() {
-      var cR           = CONFIG.cR,
-      cG               = CONFIG.cG,
-      cB               = CONFIG.cB;
+      var RGB = hexToRgb(CONFIG.color);
+      var cR  = RGB.r,
+      cG      = RGB.g,
+      cB      = RGB.b;
 
       var sizeOffset = CONFIG.sizeOffset;
       var cOffset    = CONFIG.cOffset;
@@ -349,14 +348,7 @@
       processor.videoIsReady();
     },
     set: function(option, value){
-      if(option === 'color'){
-        var rgb = hexToRgb(value);
-        CONFIG.cR = rgb.r;
-        CONFIG.cG = rgb.g;
-        CONFIG.cB = rgb.b;
-      } else {
-        CONFIG[option] = value;
-      }
+      CONFIG[option] = value;
     }
   };
 
