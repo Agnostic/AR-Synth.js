@@ -18,9 +18,7 @@
     CONFIG = {
 
       // RGB Color to detect
-      cR: 177,
-      cG: 39,
-      cB: 185,
+      color: '#b127b9',
 
       // Webcam element to capture
       webcamElm: document.getElementById('webcam'),
@@ -62,7 +60,7 @@
       }, webcamError);
     } else if (navigator.webkitGetUserMedia) {
       navigator.webkitGetUserMedia({audio:true, video:true}, function(stream) {
-        video.src = window.webkitURL.createObjectURL(stream);
+        video.src = window.URL.createObjectURL(stream);
       }, webcamError);
     }
   }
@@ -176,8 +174,8 @@
 
   function initAudio() {
     theremin              = new Theremin();
-    audioContext          = new webkitAudioContext();
-    jsNode                = audioContext.createJavaScriptNode(4096);
+    audioContext          = new AudioContext();
+    jsNode                = audioContext.createScriptProcessor(4096);
     jsNode.onaudioprocess = audioProcess;
     jsNode.connect( audioContext.destination );
   }
@@ -188,6 +186,7 @@
     try{
       initAudio();
     } catch(e) {
+      console.log(e);
       alert("Your browser does not support webkitAudioContext");
     }
   };
@@ -256,9 +255,10 @@
       return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     },
     computeFrame: function() {
-      var cR           = CONFIG.cR,
-      cG               = CONFIG.cG,
-      cB               = CONFIG.cB;
+      var RGB = hexToRgb(CONFIG.color);
+      var cR  = RGB.r,
+      cG      = RGB.g,
+      cB      = RGB.b;
 
       var sizeOffset = CONFIG.sizeOffset;
       var cOffset    = CONFIG.cOffset;
@@ -349,14 +349,7 @@
       processor.videoIsReady();
     },
     set: function(option, value){
-      if(option === 'color'){
-        var rgb = hexToRgb(value);
-        CONFIG.cR = rgb.r;
-        CONFIG.cG = rgb.g;
-        CONFIG.cB = rgb.b;
-      } else {
-        CONFIG[option] = value;
-      }
+      CONFIG[option] = value;
     }
   };
 
