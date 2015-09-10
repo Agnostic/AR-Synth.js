@@ -60,7 +60,7 @@
       }, webcamError);
     } else if (navigator.webkitGetUserMedia) {
       navigator.webkitGetUserMedia({audio:true, video:true}, function(stream) {
-        video.src = window.webkitURL.createObjectURL(stream);
+        video.src = window.URL.createObjectURL(stream);
       }, webcamError);
     }
   }
@@ -174,8 +174,8 @@
 
   function initAudio() {
     theremin              = new Theremin();
-    audioContext          = new webkitAudioContext();
-    jsNode                = audioContext.createJavaScriptNode(4096);
+    audioContext          = new AudioContext();
+    jsNode                = audioContext.createScriptProcessor(4096);
     jsNode.onaudioprocess = audioProcess;
     jsNode.connect( audioContext.destination );
   }
@@ -186,6 +186,7 @@
     try{
       initAudio();
     } catch(e) {
+      console.log(e);
       alert("Your browser does not support webkitAudioContext");
     }
   };
