@@ -55,11 +55,11 @@
     };
 
     if (navigator.getUserMedia) {
-      navigator.getUserMedia({audio: true, video: true}, function(stream) {
+      navigator.getUserMedia({audio: false, video: true}, function(stream) {
         video.src = stream;
       }, webcamError);
     } else if (navigator.webkitGetUserMedia) {
-      navigator.webkitGetUserMedia({audio:true, video:true}, function(stream) {
+      navigator.webkitGetUserMedia({ audio:false, video:true }, function(stream) {
         video.src = window.URL.createObjectURL(stream);
       }, webcamError);
     }
